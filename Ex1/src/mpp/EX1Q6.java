@@ -14,7 +14,7 @@ public class EX1Q6 {
 		}
 	}
 	
-	public static void test(int n) {
+	public static void main(int n) {
 		shared_counter = 0;
 		System.out.println("Running test for EX1Q6 with " + Integer.toString(n) + " threads");
 		MyThread[] threads = new MyThread[n];

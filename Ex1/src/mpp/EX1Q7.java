@@ -22,7 +22,7 @@ public class EX1Q7 {
 		}
 	}
 	
-	public static void test(int n) {
+	public static void main(int n) {
 		shared_counter = 0;
 		System.out.println("Running test for EX1Q7 with " + Integer.toString(n) + " threads");
 		MyThread[] threads = new MyThread[n];

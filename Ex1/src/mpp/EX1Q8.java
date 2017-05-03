@@ -14,7 +14,7 @@ public class EX1Q8 {
 		}
 	}
 	
-	public static void test(int n) {
+	public static void main(int n) {
 		shared_counter = new AtomicInteger(0);
 		System.out.println("Running test for EX1Q8 with " + Integer.toString(n) + " threads");
 		MyThread[] threads = new MyThread[n];
