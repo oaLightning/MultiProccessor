@@ -1,2 +1,5 @@
 .recommenders
 .metadata
+build
+.classpath
+.project
