@@ -97,13 +97,16 @@ public class Ex2q7
 			
 			UCNode<T> current = tail.get(tid);
 			T structure = baseStructures.get(tid);
-			while (current != announce.get(tid) && current.next != null) {
-				current.operation.apply(structure);
-				current = current.next;
+			try {
+				while (current.seq != announce.get(tid).seq && current.next != null) {
+					current.operation.apply(structure);
+					current = current.next;
+				}
+				tail.set(tid, current);
+				return current.operation.apply(structure);
+			} catch (Exception e) {
+				return 0;
 			}
-			tail.set(tid, current);
-			baseStructures.set(tid, structure);
-			return current.operation.apply(structure);
 		}
 		
 		private UCNode<T> maxHead() {
