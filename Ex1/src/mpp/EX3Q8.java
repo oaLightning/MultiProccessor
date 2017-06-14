@@ -4,8 +4,6 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-import mpp.EX1Q7.MyThread;
-
 public class EX3Q8 {
 	static interface Lock {
 		void lock();
