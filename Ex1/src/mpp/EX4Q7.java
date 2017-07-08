@@ -103,14 +103,14 @@ public class EX4Q7 {
 		
 		// The get function either returns the already existing node with the given key
 		// or creates a new node and returns it
-		T get(int key) {
+		Node get(int key) {
 			while(true) {
 				// We have a special case for the chance that the list is still empty 
 				if (null == head.next) {
 					try (BackoffLock.AutoClose headLock = head.lock.lock()) {
 						if (null == head.next) {
 							head.next = new Node(key);
-							return head.next.value;
+							return head.next;
 						} else {
 							continue;
 						}
@@ -133,7 +133,7 @@ public class EX4Q7 {
 							// We make sure that after the lock a new node still wasn't added
 							if (null == prev.next) {
 								prev.next = new Node(key);
-								return prev.next.value;
+								return prev.next;
 							} else {
 								continue;
 							}
@@ -141,7 +141,7 @@ public class EX4Q7 {
 					}
 					// We check if we found a node with the given key already
 					if (curr.key == key) {
-						return curr.value;
+						return curr;
 					}
 					try (BackoffLock.AutoClose prevLock = prev.lock.lock();
 						 BackoffLock.AutoClose currLock = curr.lock.lock()) {
@@ -153,7 +153,7 @@ public class EX4Q7 {
 							Node newNode = new Node(key);
 							newNode.next = curr;
 							prev.next = newNode;
-							return newNode.value;
+							return newNode;
 						} else {
 							continue;
 						}
@@ -165,8 +165,12 @@ public class EX4Q7 {
 	
 	
 	static class EdgeList {
+		EdgeList() {
+			edges = new OpportunisticList<Edge>();
+		}
+		
 		void addEdge(Edge e) {
-			edges.get(e.destinationNode).weight = e.weight;
+			edges.get(e.destinationNode).value = e;
 		}
 		OpportunisticList<Edge> edges;
 	}
@@ -189,6 +193,7 @@ public class EX4Q7 {
 		    g_edges = Integer.parseInt(parts[3]);
 		    g_input = new String[g_edges];
 		    
+		    
 		    for (int i = 0; i < g_edges; i++) {
 		    	g_input[i] = br.readLine();
 		    	assert null != g_input[i];
@@ -197,6 +202,7 @@ public class EX4Q7 {
 		    assert null == extraLines;
 		    return true;
 		} catch (Exception e) {
+			System.out.println("Found a problem " + e.toString());
 			return false;
 		}
 	}
@@ -222,15 +228,19 @@ public class EX4Q7 {
 		}
 	}
 	
-	static class Node {
+	static class GraphNode {
 		EdgeList edges;
+		
+		public GraphNode() {
+			edges = new EdgeList();
+		}
 	}
 	
 	static class HashBucket {
-		OpportunisticList<Node> nodes;
+		OpportunisticList<GraphNode> nodes;
 		
 		public HashBucket() {
-			nodes = new OpportunisticList<Node>();
+			nodes = new OpportunisticList<GraphNode>();
 		}
 	}
 	
@@ -238,13 +248,27 @@ public class EX4Q7 {
 		static final int SIZE_FACTOR = 8;
 		public GraphHashTable(int numberOfNodes) {
 			buckets = new HashBucket[numberOfNodes / SIZE_FACTOR];
+			for (int i = 0; i < buckets.length; i++) {
+				buckets[i] = new HashBucket();
+			}
 		}
 		
 		HashBucket[] buckets;
 		
-		Node getNode(int key) {
+		GraphNode getNode(int key) {
 			int bucketIndex = key % buckets.length;
-			return buckets[bucketIndex].nodes.get(key);
+			OpportunisticList<GraphNode>.Node node = buckets[bucketIndex].nodes.get(key);
+			// Here we set the internal value (the graph node inside the list node) if it wasn't set before
+			if (null != node.value) {
+				return node.value;
+			}
+			try (BackoffLock.AutoClose nodeLock = node.lock.lock()) {
+				if (null != node.value) {
+					return node.value;
+				}
+				node.value = new GraphNode();
+				return node.value;
+			}
 		}
 	}
 	
@@ -268,7 +292,7 @@ public class EX4Q7 {
 	
 	public static void main(int numberOfThreads, String inputPath) {
 		System.out.println("Preparing test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
-		assert readFile(inputPath);
+		readFile(inputPath);
 		g_graph = new GraphHashTable(g_nodes);
 		g_edgesProcessed = new AtomicInteger(0);
 		
