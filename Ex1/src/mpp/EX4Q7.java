@@ -223,7 +223,7 @@ public class EX4Q7 {
 	}
 	
 	static class GraphHashTable {
-		static final int SIZE_FACTOR = 2;
+		static final int SIZE_FACTOR = 8;
 		public GraphHashTable(int numberOfNodes) {
 			buckets = new HashBucket[numberOfNodes / SIZE_FACTOR];
 			for (int i = 0; i < buckets.length; i++) {
