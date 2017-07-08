@@ -4,42 +4,36 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.lang.AutoCloseable;
 
 public class EX4Q7 {
 	
-	// Since we aren't allowed to use any built-in type we'll use the Backoff lock from 
-	// EX3Q8. This lock is good since we won't hold any lock for too long and that would mean
-	// that the waiting thread will wake up pretty quickly. We changed the minDelay and
-	// maxDelay to be constants to reduce a tiny bit of overhead (and since they will always
-	// be the same for us her) and made the Backoff class a static class inside the lock to
-	// encapsulate better. We also made the lock function return an AutoCloseable class 
-	// to make the rest of the code cleaner
-	static class BackoffLock implements AutoCloseable {
+	// Since we aren't allowed to use any built-in type we'll use a simple lock that in stead of
+	// spinning will delay for a short while (since the locks aren't expected to be held for a lot of time).
+	// We make the lock's "lock" function return an "AutoClose" variable to make it's use simpler
+	static class SimpleLock {
+		private static final int DELAY = 1; 
 		private AtomicBoolean state;
 		
-		public BackoffLock() {
+		public SimpleLock() {
 			this.state = new AtomicBoolean(false);
 		}
 		
 		public AutoClose lock() {
-			Backoff backoff = new Backoff();
 			while (true) {
 				while (state.get()) {};
 				if (!state.getAndSet(true)) {
 					return new AutoClose(this);
 				} else {
-					backoff.backoff();
+					try {
+						Thread.sleep(DELAY);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
-		}
-		
-		@Override
-		public void close() throws Exception {
-			unlock();			
 		}
 		
 		public void unlock() {
@@ -47,33 +41,13 @@ public class EX4Q7 {
 		}
 		
 		static class AutoClose implements AutoCloseable {
-			BackoffLock lock;
-			public AutoClose(BackoffLock lock) {
+			SimpleLock lock;
+			public AutoClose(SimpleLock lock) {
 				this.lock = lock;
 			}
 			@Override
 			public void close() {
 				lock.unlock();
-			}
-		}
-		
-		static class Backoff {
-			final int minDelay = 1;
-			final int maxDelay = 5;
-			int limit;
-			final Random random;
-			public Backoff() {
-				limit = minDelay;
-				random = new Random();
-			}
-			public void backoff() {
-				int delay = random.nextInt(limit);
-				limit = Math.min(maxDelay, 2 * limit);
-				try {
-					Thread.sleep(delay);
-				} catch (InterruptedException e) {
-					System.out.println("Didn't expect to actually be interrupted");
-				}
 			}
 		}
 	}
@@ -87,12 +61,14 @@ public class EX4Q7 {
 			int key;
 			T value;
 			Node next;
-			BackoffLock lock;
+			SimpleLock lock;
+			SimpleLock dataLock;
 			
 			Node(int key) {
 				this.key = key;
 				this.next = null;
-				lock = new BackoffLock();
+				lock = new SimpleLock();
+				dataLock = new SimpleLock();
 			}
 		}
 		
@@ -109,7 +85,7 @@ public class EX4Q7 {
 			while(true) {
 				// We have a special case for the chance that the list is still empty 
 				if (null == head.next) {
-					try (BackoffLock.AutoClose headLock = head.lock.lock()) {
+					try (SimpleLock.AutoClose headLock = head.lock.lock()) {
 						if (null == head.next) {
 							head.next = new Node(key);
 							return head.next;
@@ -131,7 +107,7 @@ public class EX4Q7 {
 					}
 					// If we reached the end of the list then we need to add a new node
 					if (null == curr) {
-						try (BackoffLock.AutoClose prevLock = prev.lock.lock()) {
+						try (SimpleLock.AutoClose prevLock = prev.lock.lock()) {
 							// We make sure that after the lock a new node still wasn't added
 							if (null == prev.next) {
 								prev.next = new Node(key);
@@ -145,8 +121,8 @@ public class EX4Q7 {
 					if (curr.key == key) {
 						return curr;
 					}
-					try (BackoffLock.AutoClose prevLock = prev.lock.lock();
-						 BackoffLock.AutoClose currLock = curr.lock.lock()) {
+					try (SimpleLock.AutoClose prevLock = prev.lock.lock();
+						 SimpleLock.AutoClose currLock = curr.lock.lock()) {
 						// We check that after we took the locks there still isn't any
 						// new node that came between the 2 locked nodes. We should notice
 						// that if there is then due to the optimization we won't have to scan
@@ -247,7 +223,7 @@ public class EX4Q7 {
 	}
 	
 	static class GraphHashTable {
-		static final int SIZE_FACTOR = 8;
+		static final int SIZE_FACTOR = 2;
 		public GraphHashTable(int numberOfNodes) {
 			buckets = new HashBucket[numberOfNodes / SIZE_FACTOR];
 			for (int i = 0; i < buckets.length; i++) {
@@ -264,7 +240,7 @@ public class EX4Q7 {
 			if (null != node.value) {
 				return node.value;
 			}
-			try (BackoffLock.AutoClose nodeLock = node.lock.lock()) {
+			try (SimpleLock.AutoClose nodeLock = node.dataLock.lock()) {
 				if (null != node.value) {
 					return node.value;
 				}
@@ -297,7 +273,7 @@ public class EX4Q7 {
 	}
 	
 	public static void main(int numberOfThreads, String inputPath) {
-		System.out.println(getCurrentTimeStamp() + " Preparing test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
+		//System.out.println(getCurrentTimeStamp() + " Preparing test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
 		readFile(inputPath);
 		g_graph = new GraphHashTable(g_nodes);
 		g_edgesProcessed = new AtomicInteger(0);
@@ -307,7 +283,7 @@ public class EX4Q7 {
 			threads[i] = new WorkerThread();
 		}
 		
-		System.out.println(getCurrentTimeStamp() + " Running test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
+		//System.out.println(getCurrentTimeStamp() + " Running test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
 		long start_time = System.currentTimeMillis();
 		
 		for (int i = 0; i < numberOfThreads; i++) {
