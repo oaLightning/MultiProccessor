@@ -1,16 +1,11 @@
-import mpp.EX3Q8;
+import mpp.EX4Q7;
 
-public class MppRunner {
-	final static int NUMBER_OF_RUNS = 3;
-	
+public class MppRunner {	
 	public static void main(String[] args) {
-		for (int num_threads : new int[] {1, 2, 4, 8, 16, 32} ) {
-			for (int type : new int[] {1, 2, 3}) {
-				for (int i = 0; i < NUMBER_OF_RUNS; i++) {
-					EX3Q8.main(num_threads, type);
-				}
-			}
+		String path = "C:\\Users\\omera_000\\Dropbox\\University\\MultiCpu\\HW4\\graph.txt";
+		for (int num_threads : new int[] {1} ) {
+		//for (int num_threads : new int[] {1, 2, 4, 8, 16, 32, 64} ) {
+			EX4Q7.main(num_threads, path);
 		}
-		
 	}
 }
