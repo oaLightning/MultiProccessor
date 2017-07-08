@@ -2,6 +2,8 @@ package mpp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -290,18 +292,22 @@ public class EX4Q7 {
 		int threadIndex;
 	}
 	
+	static String getCurrentTimeStamp() {
+	    return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+	}
+	
 	public static void main(int numberOfThreads, String inputPath) {
-		System.out.println("Preparing test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
+		System.out.println(getCurrentTimeStamp() + " Preparing test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
 		readFile(inputPath);
 		g_graph = new GraphHashTable(g_nodes);
 		g_edgesProcessed = new AtomicInteger(0);
 		
-		System.out.println("Running test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
 		WorkerThread[] threads = new WorkerThread[numberOfThreads];
 		for (int i = 0; i < numberOfThreads; i++) {
 			threads[i] = new WorkerThread();
 		}
 		
+		System.out.println(getCurrentTimeStamp() + " Running test for EX4Q7 with " + Integer.toString(numberOfThreads) + " threads");
 		long start_time = System.currentTimeMillis();
 		
 		for (int i = 0; i < numberOfThreads; i++) {
