@@ -13,8 +13,11 @@ $(EXEC): $(OBJS)
 SPArrayList.o: SPArrayList.c SPArrayList.h
 	$(CC) $(CC_COMP_FLAG) $(SDL_COMP_FLAG) -c SPArrayList.c
 
-SPCHESSGame.o: SPCHESSGame.c SPGetMoves.c SPCHESSGame.h SPGetMoves.h SPArrayList.h
-	$(CC) $(CC_COMP_FLAG) $(SDL_COMP_FLAG) -c SPCHESSGame.c SPGetMoves.c
+SPCHESSGame.o: SPCHESSGame.c SPCHESSGame.h SPGetMoves.h SPArrayList.h
+	$(CC) $(CC_COMP_FLAG) $(SDL_COMP_FLAG) -c SPCHESSGame.c
+
+SPGetMoves.o: SPGetMoves.c SPGetMoves.h
+	$(CC) $(CC_COMP_FLAG) $(SDL_COMP_FLAG) -c SPGetMoves.c
 
 SPMiniMax.o: SPMiniMax.c SPMiniMax.h SPCHESSGame.h SPGetMoves.h SPArrayList.h
 	$(CC) $(CC_COMP_FLAG) $(SDL_COMP_FLAG) -c SPMiniMax.c
