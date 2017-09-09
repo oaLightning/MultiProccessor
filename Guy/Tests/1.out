@@ -1,0 +1,90 @@
+Specify game setting or type 'start' to begin a game with the current setting:
+Game mode is set to 2 players
+8| R N B Q K B N R |
+7| M M M M M M M M |
+6| _ _ _ _ _ _ _ _ |
+5| _ _ _ _ _ _ _ _ |
+4| _ _ _ _ _ _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m m m m m |
+1| r n b q k b n r |
+  -----------------
+   A B C D E F G H
+white player - enter your move:
+8| R N B Q K B N R |
+7| M M M M M M M M |
+6| _ _ _ _ _ _ _ _ |
+5| _ _ _ _ _ _ _ _ |
+4| _ _ _ _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b q k b n r |
+  -----------------
+   A B C D E F G H
+black player - enter your move:
+8| R N B Q K B N R |
+7| M M M M _ M M M |
+6| _ _ _ _ _ _ _ _ |
+5| _ _ _ _ M _ _ _ |
+4| _ _ _ _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b q k b n r |
+  -----------------
+   A B C D E F G H
+white player - enter your move:
+8| R N B Q K B N R |
+7| M M M M _ M M M |
+6| _ _ _ _ _ _ _ _ |
+5| _ _ _ _ M _ _ q |
+4| _ _ _ _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b _ k b n r |
+  -----------------
+   A B C D E F G H
+black player - enter your move:
+8| R _ B Q K B N R |
+7| M M M M _ M M M |
+6| _ _ N _ _ _ _ _ |
+5| _ _ _ _ M _ _ q |
+4| _ _ _ _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b _ k b n r |
+  -----------------
+   A B C D E F G H
+white player - enter your move:
+8| R _ B Q K B N R |
+7| M M M M _ M M M |
+6| _ _ N _ _ _ _ _ |
+5| _ _ _ _ M _ _ q |
+4| _ _ b _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b _ k _ n r |
+  -----------------
+   A B C D E F G H
+black player - enter your move:
+8| R _ B Q K B _ R |
+7| M M M M _ M M M |
+6| _ _ N _ _ N _ _ |
+5| _ _ _ _ M _ _ q |
+4| _ _ b _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b _ k _ n r |
+  -----------------
+   A B C D E F G H
+white player - enter your move:
+8| R _ B Q K B _ R |
+7| M M M M _ q M M |
+6| _ _ N _ _ N _ _ |
+5| _ _ _ _ M _ _ _ |
+4| _ _ b _ m _ _ _ |
+3| _ _ _ _ _ _ _ _ |
+2| m m m m _ m m m |
+1| r n b _ k _ n r |
+  -----------------
+   A B C D E F G H
+Checkmate! white player wins the game

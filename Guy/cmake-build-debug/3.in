@@ -1,0 +1,29 @@
+difficulty 6
+difficulty 4
+game_mode 2
+difficulty 3
+start
+move <2,E> to <3,D>
+move <2,E> to <4,E>
+move <8,G> to <6,F>
+move <1,B> to <3,C>
+move <7,D> to <5,D>
+move <9,F> to <3,A>
+move <4,E> to <5,D>
+move <6,F> to <5,D>
+move <1,F> to <4,C>
+move <5,D> to <5,D>
+move <5,D> to <6,B>
+move <4,C> to <3,B>
+move <8,B> to <6,C>
+move <7,A> to <5,A>
+move <1,G> to <3,F>
+undo
+move <8,C> to <4,G>
+move <3,B> to <7,F>
+move <8,E> to <7,D>
+move <1,D> to <2,E>
+move <7,E> to <6,E>
+move <2,H> to <3,H>
+move <4,G> to <3,F>
+move <2,E> to <6,E>

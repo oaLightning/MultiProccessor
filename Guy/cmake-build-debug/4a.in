@@ -1,0 +1,13 @@
+game_mode 2
+start
+move <2,E> to <4,E>
+move <8,G> to <6,F>
+move <4,E> to <5,E>
+move <6,F> to <5,D>
+move <1,G> to <3,F>
+move <7,D> to <6,D>
+move <1,F> to <4,C>
+move <8,C> to <6,E>
+move <1,B> to <3,C>
+save 1.xml
+quit

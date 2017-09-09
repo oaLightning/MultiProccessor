@@ -1,0 +1,11 @@
+load 1.xml
+move <5,D> to <6,B>
+move <4,C> to <6,E>
+move <7,F> to <6,E>
+move <3,F> to <5,G>
+move <7,H> to <6,H>
+move <5,G> to <6,E>
+move <8,D> to <7,D>
+move <1,D> to <5,H>
+move <7,G> to <6,G>
+move <5,H> to <6,G>

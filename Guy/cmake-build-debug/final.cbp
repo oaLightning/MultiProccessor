@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="final"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="final">
+				<Option output="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/final" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 final"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="final/fast">
+				<Option output="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/final" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.1.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 final/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/Guy/Dropbox/לימודים/project/final/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPArrayList.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPArrayList.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPCHESSGame.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPCHESSGame.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPCHESSParser.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPCHESSParser.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPGetMoves.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPGetMoves.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPMainAux.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPMainAux.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPMiniMax.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPMiniMax.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPXML.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/SPXML.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/console.c">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/console.h">
+			<Option target="final"/>
+		</Unit>
+		<Unit filename="/Users/Guy/Dropbox/לימודים/project/final/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
