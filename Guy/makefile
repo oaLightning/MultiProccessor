@@ -1,5 +1,5 @@
 CC = gcc
-OBJS = console.o SPMainAux.o SPXML.o SPCHESSParser.o SPMiniMax.o SPCHESSGame.o SPArrayList.o
+OBJS = console.o SPMainAux.o SPXML.o SPCHESSParser.o SPMiniMax.o SPCHESSGame.o SPArrayList.o SPGetMoves.o
  
 EXEC = prog
 CC_COMP_FLAG = -std=c99 -Wall -Wextra \
